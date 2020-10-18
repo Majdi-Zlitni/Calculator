@@ -7,7 +7,7 @@ public class Prog {
 	public static void main(String[] args) {
 		Scanner cont= new Scanner(System.in);
 		
-/***************************************	
+/****
 
 		System.out.println("donner un entier");
 		int n=cont.nextInt();
@@ -27,18 +27,18 @@ public class Prog {
 		System.out.println("combinison="+com(n,k));
 		
 		
-***************************************/
-
-		
 		
 		System.out.println("donner un entier en binaire:");
 
-		String b=cont.nextLine();
+		String b=cont.next();
 		while(!CheckIfBinary(b)) {
 			System.out.println("donner un entier en binaire:");
-			b=cont.nextLine();
+			b=cont.next();
 		}
 			System.out.println("Nombre en Decimal=="+FromBinaryToDecimal(b));
+			System.out.println("Nombre en Hexadecimal=="+fromBinaryToHex(b));
+		*///
+		System.out.println(ordre(123444));
 		cont.close();
 		
 		
@@ -83,7 +83,7 @@ public class Prog {
 		}while(i<ch.length());
 		return i==ch.length();	
 	}
-	//Cnovertion d'un nombre en decimal
+	//Convertion d'un nombre en decimal
 	public static int FromBinaryToDecimal (String ch) {
 		int l=ch.length()-1;
 		int sum=0;
@@ -102,6 +102,52 @@ public class Prog {
 		return sum;
 		
 	}
+	//Conversion binaire en héxadécimal
+	public static String fromBinaryToHex(String ch) {
+		
+		int x=FromBinaryToDecimal (ch);
+		String ch2="";
+		if(x>9) {
+		while(x!=0) {
+			x=x/16;
+			int mod=x%16;
+			if(mod>9) {
+				int y=55+mod;
+				ch2=Character.toString((char)y)+ch;
+			}
+			else {
+				ch2=String.valueOf(mod)+ch;
+			}
+		}
+		
+		
+		return ch2;
+		}
+		else {
+			return String.valueOf(FromBinaryToDecimal (ch));
+		}
+	}
+	
+	//Ordre numérique
+	/*********
+	public static int ordre(int x) {
+		Scanner str=new Scanner(System.in);
+		while(x<10000) {
+			System.out.println("Donner un entier >10000");
+			x=str.nextInt();
+			
+		}
+		String ch=String.valueOf(x);
+		int min=0;
+		for(int i=0;i<ch.length();i++) {
+			
+		}
+		
+		return 0;
+		str.close();
+	}
+
+********/
 	
 }
 			
